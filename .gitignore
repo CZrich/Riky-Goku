@@ -1,3 +1,7 @@
+#vite files
+.env
+.env.loacal
+!.env.example
 # Logs
 logs
 *.log
