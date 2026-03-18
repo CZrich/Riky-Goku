@@ -16,7 +16,7 @@ export interface IGoku{
  id:number;
  name:string;
  ki:string;
- maxki:string;
+ maxKi:string;
  race:string;
  gender:string;
  description:string;

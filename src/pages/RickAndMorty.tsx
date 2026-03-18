@@ -1,4 +1,4 @@
-export  default function Riky() {
+export  default function RickAndMorty() {
   return (
     <div>
         riky & morty !!!

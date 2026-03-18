@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import Layout from "../Layout/Layout";
-import Goku from "../pages/Goku";
-import Riky from "../pages/Riky";
-import  NoFoundPage from "../pages/NoFoundPage";
+import DragonBall from "../pages/DragonBall";
+import RikAndMorty from "../pages/RickAndMorty";
+import NoFoundPage from "../pages/NoFoundPage";
 
 export const routes = createBrowserRouter([
 
@@ -18,12 +18,12 @@ export const routes = createBrowserRouter([
 
             },
             {
-                path: "goku",
-                element: <Goku />
+                path: "dragonball",
+                element: <DragonBall/>
             },
             {
-                path: "riky",
-                element: <Riky />
+                path: "rickandmorty",
+                element: <RikAndMorty/>
             },
             {
                 path:"*",

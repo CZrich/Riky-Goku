@@ -3,17 +3,15 @@ import type { ICardProps } from "../types/ICard";
 export function CardView({ title, subtitle, image, badge, description, footerInfo }: ICardProps) {
     return (
         <div className="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden flex flex-col h-full transform hover:-translate-y-1">
-            {/* Contenedor de Imagen Optimizado */}
+            
             <div className="relative aspect-[4/5] overflow-hidden bg-gray-200">
                 <img
-                    src={image || 'https://via.placeholder.com/300'}
-                    alt={title}
-                    // 'object-top' asegura que veamos la cabeza/pecho. 
-                    // 'object-cover' llena el contenedor sin deformar.
+                    src={image||""}
+                 
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-in-out"
                 />
                 
-                {/* Badge con mejor contraste */}
+               
                 {badge && (
                     <div className="absolute top-3 right-3">
                         <span className="bg-white/90 backdrop-blur-sm text-blue-900 text-[10px] uppercase tracking-widest font-black px-3 py-1.5 rounded-lg shadow-lg">
@@ -22,7 +20,7 @@ export function CardView({ title, subtitle, image, badge, description, footerInf
                     </div>
                 )}
                 
-                {/* Degradado suave sobre la imagen para que el texto respire */}
+          
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
@@ -41,7 +39,7 @@ export function CardView({ title, subtitle, image, badge, description, footerInf
                     </p>
                 )}
 
-                {/* Footer info con estilo de "Metadata" */}
+               
                 {footerInfo && (
                     <div className="pt-4 border-t border-gray-100 mt-auto flex justify-between items-center">
                         <span className="text-[11px] text-gray-400 font-bold uppercase tracking-widest">

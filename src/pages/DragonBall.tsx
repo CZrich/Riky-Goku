@@ -7,8 +7,8 @@ import { SearchBar } from "../components/SearchBar";
 import { useState } from "react";
 import { CardGridSkeleton } from "../components/CardGridSkeleton";
 
-export default function Goku() {
-    const url = import.meta.env.VITE_API_URL_GOKU;
+export default function DragonBall() {
+    const url = import.meta.env.VITE_API_URL_DRAGONBALL;
     const [search, setSearch] = useState("");
 
     const { data, isError, isPending, error } = useQuery(
@@ -26,11 +26,13 @@ export default function Goku() {
     const handleClear = () => {
         setSearch("")
     }
+    console.log(data?.items);
 
     // Filtramos usando filterQuery
     const filteredCharacters = data?.items?.filter(char =>
         char.name.toLowerCase().includes(search.toLowerCase())
     ) || []
+
     if (isPending) {
         return (
 
@@ -62,17 +64,25 @@ export default function Goku() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-6">
 
                 {
-                    filteredCharacters?.map((goku) => (
-                        <CardView
-                            key={goku.id}
-                            title={goku.name}
-                            subtitle={goku.race}
-                            image={goku.image}
-                            badge={goku.affiliation}
-                            description={goku.description}
-                            footerInfo={`Max Ki: ${goku.maxki}`}
-                        />
-                    ))
+                    search && filteredCharacters.length == 0 ? 
+                    <div>no se encontro a ni uno...</div>
+                    :(
+                filteredCharacters?.map((goku) => (
+                <CardView
+                    key={goku.id}
+                    title={goku.name}
+                    subtitle={goku.race}
+                    image={goku.image}
+                    badge={goku.affiliation}
+                    description={goku.description}
+                    footerInfo={`Max Ki: ${goku.maxKi}`}
+                />
+                ))
+
+
+
+                )
+                   
                 }
             </div>
         </div>

@@ -16,7 +16,7 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full p-3 pl-10 pr-10 border rounded-xl" // Añadimos padding a la derecha (pr-10)
+        className="w-full p-3 pl-10 pr-10 border rounded-xl outline-blue-500 border-blue-900" 
         placeholder={placeholder}
       />
       {value && (

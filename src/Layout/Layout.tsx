@@ -10,7 +10,6 @@ export default function Layout() {
                 <NavBar />
             </header>
   
-            {/* flex-grow empuja al footer hacia abajo si el contenido es corto */}
             <main className="flex-grow container mx-auto px-4 py-8 max-w-7xl">
                 <Outlet />
             </main>
