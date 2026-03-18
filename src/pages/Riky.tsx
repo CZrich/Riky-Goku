@@ -1,4 +1,4 @@
-export function Riky() {
+export  default function Riky() {
   return (
     <div>
         riky & morty !!!

@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import Layout from "../Layout/Layout";
-import { Goku } from "../pages/Goku";
-import { Riky } from "../pages/Riky";
-import { NoFoundPage } from "../pages/NoFoundPage";
+import Goku from "../pages/Goku";
+import Riky from "../pages/Riky";
+import  NoFoundPage from "../pages/NoFoundPage";
 
 export const routes = createBrowserRouter([
 

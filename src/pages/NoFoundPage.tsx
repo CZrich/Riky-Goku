@@ -1,6 +1,7 @@
 
 import {redirect} from 'react-router-dom'
-export function NoFoundPage() {
+
+export  default function  NoFoundPage() {
   return (
     <div>
         <p>404 </p>
