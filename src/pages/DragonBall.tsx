@@ -6,16 +6,16 @@ import { CardView } from "../components/CardView";
 import { SearchBar } from "../components/SearchBar";
 import { useState } from "react";
 import { CardGridSkeleton } from "../components/CardGridSkeleton";
-
+import { dbzApi } from "../api/axiosInstances";
 export default function DragonBall() {
-    const url = import.meta.env.VITE_API_URL_DRAGONBALL;
+   
     const [search, setSearch] = useState("");
 
     const { data, isError, isPending, error } = useQuery(
         {
             queryKey: ["characters"],
             queryFn: () => {
-                const res = genericFetcher<IApiResponse<IGoku>>(url)
+                const res = genericFetcher<IApiResponse<IGoku>>(dbzApi)
                 return res;
             }
 
@@ -74,6 +74,8 @@ export default function DragonBall() {
                                     className="bg-white p-3 rounded-[2rem] border-2 border-[#8A9294]/30 shadow-lg hover:border-[#F85B1A] transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl"
                                 >
                                     <CardView
+                                        id={goku.id}
+                                        ruta={"dragonball"}
                                         key={goku.id}
                                         title={goku.name}
                                         subtitle={goku.race}

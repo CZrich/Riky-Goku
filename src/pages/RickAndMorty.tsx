@@ -6,15 +6,15 @@ import type { IApiResponse } from "../types/IGenericApiResponse";
 import type { IRiky } from "../types/IRiky";
 import { CardGridSkeleton } from "../components/CardGridSkeleton";
 import { CardView } from "../components/CardView";
-
+import { rickAndMortyApi } from "../api/axiosInstances";
 export default function RickAndMorty() {
-  const url = import.meta.env.VITE_API_URL_RICK_AND_MORTY;
+
   const [search, setSearch] = useState("");
   const { data, isError, isLoading, error } = useQuery({
 
     queryKey: ["character"],
     queryFn: () => {
-      const res = genericFetcher<IApiResponse<IRiky>>(url)
+      const res = genericFetcher<IApiResponse<IRiky>>(rickAndMortyApi)
       return res;
     }
   })
@@ -72,6 +72,8 @@ console.log("lo filtrado",characterFilters)
                   className="bg-white p-3 rounded-[1.5rem] border-2 border-[#87d1db] shadow-md hover:border-[#02afc5] transition-all duration-300 transform hover:-translate-y-2"
                 >
                   <CardView
+                     id={cha.id}
+                     ruta={"rickandmorty"}
                     title={cha.name}
                     subtitle={cha.name}
                     badge={cha.status}

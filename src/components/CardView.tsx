@@ -1,8 +1,14 @@
 import type { ICardProps } from "../types/ICard";
+import { useNavigate } from "react-router-dom";
 
-export function CardView({ title, subtitle, image, badge, description, footerInfo }: ICardProps) {
+export function CardView({ id,ruta, title, subtitle, image, badge, description, footerInfo }: ICardProps) {
+  const navigate =useNavigate();
+    const  handleClick=(id:number, ruta:string)=>{
+         navigate(`/${ruta}/${id}`)
+ 
+    }
     return (
-        <div className="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden flex flex-col h-full transform hover:-translate-y-1">
+        <div onClick={()=>handleClick(id as number,ruta as string )} className="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden flex flex-col h-full transform hover:-translate-y-1">
             
             <div className="relative aspect-[4/5] overflow-hidden bg-gray-200">
                 <img

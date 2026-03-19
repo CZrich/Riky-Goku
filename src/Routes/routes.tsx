@@ -4,6 +4,8 @@ import Layout from "../Layout/Layout";
 import DragonBall from "../pages/DragonBall";
 import RikAndMorty from "../pages/RickAndMorty";
 import NoFoundPage from "../pages/NoFoundPage";
+import DetailPageDragonBall from "../pages/DetailPageDragonBall";
+import { DetailPageRickAndMorty } from "../pages/DetailPageRickAndMorty";
 
 export const routes = createBrowserRouter([
 
@@ -24,6 +26,16 @@ export const routes = createBrowserRouter([
             {
                 path: "rickandmorty",
                 element: <RikAndMorty/>
+            },
+            {
+                path:"dragonball/:id",
+                element:<DetailPageDragonBall/>
+
+            },
+            {
+                path:"rickandmorty/:id",
+                element:<DetailPageRickAndMorty/>
+
             },
             {
                 path:"*",
