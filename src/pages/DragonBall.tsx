@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery,keepPreviousData} from "@tanstack/react-query";
 import { genericFetcher } from "../api";
 import type { IGoku } from "../types/IGoku";
 import type { IApiResponse } from "../types/IGenericApiResponse";
@@ -7,24 +7,31 @@ import { SearchBar } from "../components/SearchBar";
 import { useState } from "react";
 import { CardGridSkeleton } from "../components/CardGridSkeleton";
 import { dbzApi } from "../api/axiosInstances";
+import { Pagination } from "../components/Pagination";
 export default function DragonBall() {
    
     const [search, setSearch] = useState("");
-
-    const { data, isError, isPending, error } = useQuery(
+    const [page,setPage]=useState(0)
+    const { data, isError, isPending, error, isPlaceholderData } = useQuery(
         {
-            queryKey: ["characters"],
+            queryKey: ["characters",page+1],
             queryFn: () => {
-                const res = genericFetcher<IApiResponse<IGoku>>(dbzApi)
+                const res = genericFetcher<IApiResponse<IGoku>>(dbzApi,`?page=${page+1}`)
                 return res;
-            }
+            },
+            placeholderData:keepPreviousData,
+            staleTime:2*3000
 
 
 
         });
 
-
-    console.log(data?.items);
+    const nextPage=()=>(setPage(prev=>prev+1))
+    const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)))
+    const hasNextPage= !!data?.links?.next;
+     console.log("hasnext",hasNextPage)
+    console.log("pagina",page)
+    console.log(data);
 
     // Filtramos usando filterQuery
     const filteredCharacters = data?.items?.filter(char =>
@@ -59,6 +66,16 @@ export default function DragonBall() {
                         />
                     </div>
                 </div>
+
+                <Pagination
+                page={page}
+                isPlaceData={isPlaceholderData}
+                prevPage={prevPage}
+                nextPage={nextPage}
+                
+                isNextDisabled={!hasNextPage}
+
+                />
 
                 {/* Grid de Personajes */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-6">

@@ -7,6 +7,12 @@ export interface IApiResponse<T> {
         itemCount: number;
         totalPages: number;
     };
+    links?:{
+        next:string
+    }
+    info?:{
+        next:string
+    }
 
 
 }
