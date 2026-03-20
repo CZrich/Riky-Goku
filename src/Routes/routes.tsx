@@ -6,6 +6,8 @@ import RikAndMorty from "../pages/RickAndMorty";
 import NoFoundPage from "../pages/NoFoundPage";
 import DetailPageDragonBall from "../pages/DetailPageDragonBall";
 import { DetailPageRickAndMorty } from "../pages/DetailPageRickAndMorty";
+import CommenPage from "../pages/CommentPage";
+import QuizzPage from "../pages/QuizzPage";
 
 export const routes = createBrowserRouter([
 
@@ -36,6 +38,14 @@ export const routes = createBrowserRouter([
                 path:"rickandmorty/:id",
                 element:<DetailPageRickAndMorty/>
 
+            },
+            {
+                path:"comments",
+                element:<CommenPage/>
+            },
+            {
+                path:"quizz",
+                element:<QuizzPage/>
             },
             {
                 path:"*",

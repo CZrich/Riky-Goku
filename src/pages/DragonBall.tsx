@@ -29,7 +29,7 @@ export default function DragonBall() {
     const nextPage=()=>(setPage(prev=>prev+1))
     const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)))
     const hasNextPage= !!data?.links?.next;
-     console.log("hasnext",hasNextPage)
+    console.log("hasnext",hasNextPage)
     console.log("pagina",page)
     console.log(data);
 

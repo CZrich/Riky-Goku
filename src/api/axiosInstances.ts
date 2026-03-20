@@ -16,3 +16,11 @@ export const rickAndMortyApi= axios.create({
         "Content-Type":"application/json"
     }
 })
+export const commentsApi= axios.create({
+
+    baseURL:import.meta.env.VITE_API_URL_COMMENTS,
+    timeout:1000,
+    headers:{
+        "Content-Type":"application/json"
+    }
+})
