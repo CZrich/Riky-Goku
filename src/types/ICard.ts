@@ -1,4 +1,6 @@
 export interface ICardProps {
+     id?:number;
+     ruta?:string;
     title: string;
     subtitle: string;
     image: string | null;

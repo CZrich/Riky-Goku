@@ -80,6 +80,8 @@ export function NavBar() {
             <NavLink to="/" className={linkStyles}>Home</NavLink>
             <NavLink to="/rickandmorty" className={linkStyles}>Rick & Morty</NavLink>
             <NavLink to="/dragonball" className={linkStyles}>Dragon Ball</NavLink>
+            <NavLink to="/comments" className={linkStyles}>Comentar</NavLink>
+            <NavLink to ="/quizz" className={linkStyles}> Quizz</NavLink>
           </div>
         </div>
 
@@ -89,6 +91,9 @@ export function NavBar() {
             <NavLink to="/" onClick={() => setIsOpen(false)} className={linkStyles}>Home</NavLink>
             <NavLink to="/rickandmorty" onClick={() => setIsOpen(false)} className={linkStyles}>Rick & Morty</NavLink>
             <NavLink to="/dragonball" onClick={() => setIsOpen(false)} className={linkStyles}>Dragon Ball</NavLink>
+            <NavLink to="/comments" onClick={() => setIsOpen(false)} className={linkStyles}>Comentar</NavLink>
+            <NavLink to ="/quizz" onClick={() => setIsOpen(false)} className={linkStyles}> Quizz</NavLink>
+
           </div>
         </div>
       </div>

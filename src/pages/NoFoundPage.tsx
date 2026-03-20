@@ -7,7 +7,7 @@ export  default function  NoFoundPage() {
         <p>404 </p>
 
         <p>no se encuentra en una pagina</p>
-         <button onClick={()=> redirect("/")}>
+         <button onClick={()=> {throw redirect("/")}}>
             regresar
          </button>
     </div>
