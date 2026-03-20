@@ -1,5 +1,4 @@
-import { useQuery,keepPreviousData} from "@tanstack/react-query";
-import { genericFetcher } from "../api";
+
 import type { IGoku } from "../types/IGoku";
 import type { IApiResponse } from "../types/IGenericApiResponse";
 import { CardView } from "../components/CardView";
@@ -8,23 +7,26 @@ import { useState } from "react";
 import { CardGridSkeleton } from "../components/CardGridSkeleton";
 import { dbzApi } from "../api/axiosInstances";
 import { Pagination } from "../components/Pagination";
+import { useQueryFunction } from "../hooks/useQueryFunction";
+import ErrorDisplay from "../components/ErrorDisplay";
 export default function DragonBall() {
    
     const [search, setSearch] = useState("");
     const [page,setPage]=useState(0)
-    const { data, isError, isPending, error, isPlaceholderData } = useQuery(
-        {
-            queryKey: ["characters",page+1],
-            queryFn: () => {
-                const res = genericFetcher<IApiResponse<IGoku>>(dbzApi,`?page=${page+1}`)
-                return res;
-            },
-            placeholderData:keepPreviousData,
-            staleTime:2*3000
+ 
+const { 
+  data, 
+  isError, 
+  isPending, 
+  error, 
+  isPlaceholderData 
+} = useQueryFunction<IApiResponse<IGoku>>({
+  queryKeyName: "dragonball",
+  page:page,
+  endPointUrl: "", // Puedes usar 'characters' u otra url base aquí
+  apiAxiosInstance: dbzApi
+});
 
-
-
-        });
 
     const nextPage=()=>(setPage(prev=>prev+1))
     const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)))
@@ -45,7 +47,10 @@ export default function DragonBall() {
         )
     }
     if (isError) {
-        return <div> Error:{error.message}</div>
+        console.log(error)
+        return <div>
+            <ErrorDisplay/>
+        </div>
     }
 
     return (

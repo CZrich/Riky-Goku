@@ -4,6 +4,7 @@ import { commentSchema } from "../../schemas/comment.schema";
 import type { CommentType } from '../../schemas/comment.schema';
 import { useEffect } from 'react';
 
+
 interface Props {
     onSubmit: (data: Omit<CommentType, "id" | "date">) => void;
     editingComment: CommentType | null;
@@ -24,6 +25,8 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
     }, [editingComment, reset]);
     const onFormSubmit = (data) => {
         onSubmit(data);
+        console.log("aqui lanzamos el toas")
+        
         reset(); // Limpiamos el form después de guardar
     };
 

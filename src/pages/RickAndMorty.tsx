@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { SearchBar } from "../components/SearchBar";
-import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { genericFetcher } from "../api";
+import { useQueryFunction } from "../hooks/useQueryFunction";
 import type { IApiResponse } from "../types/IGenericApiResponse";
 import type { IRiky } from "../types/IRiky";
 import { CardGridSkeleton } from "../components/CardGridSkeleton";
 import { CardView } from "../components/CardView";
 import { rickAndMortyApi } from "../api/axiosInstances";
 import { Pagination } from "../components/Pagination";
+import ErrorDisplay from "../components/ErrorDisplay";
 export default function RickAndMorty() {
 
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
-
+/*
   const { data, isError, isLoading, error, isPlaceholderData } = useQuery({
 
     queryKey: ["character", page + 1],
@@ -21,22 +21,34 @@ export default function RickAndMorty() {
       return res;
     },
     placeholderData: keepPreviousData
-  })
+  })*/
+ const { 
+   data, 
+   isError, 
+   isPending, 
+   error, 
+   isPlaceholderData 
+ } = useQueryFunction<IApiResponse<IRiky>>({
+   queryKeyName: "dragonball",
+   page:page,
+   endPointUrl: "", // Puedes usar 'characters' u otra url base aquí
+   apiAxiosInstance: rickAndMortyApi
+ });
 
     const nextPage=()=>(setPage(prev=>prev+1));
     const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)));
   if (isError) {
-       console.log(error.name)
+       console.log(error?.name)
     return (
     <div> 
       
 
-        Ocurio un error
+        <ErrorDisplay/>
       
     </div>)
   }
 
-  if (isLoading) {
+  if (isPending) {
 
     return (
       <CardGridSkeleton />
