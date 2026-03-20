@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import type { IDetailRickAndMorty } from "../types/IDetailRickAndMorty";
 import { rickAndMortyApi } from "../api/axiosInstances";
-export function DetailPageRickAndMorty() {
+export  default function DetailPageRickAndMorty() {
   const { id } = useParams();
   const { data, error, isLoding } = useFetch<IDetailRickAndMorty>(rickAndMortyApi,id||"");
   console.log("data in rick",data);
