@@ -1,5 +1,5 @@
 
-import {redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 export  default function  NoFoundPage() {
   return (
@@ -7,9 +7,9 @@ export  default function  NoFoundPage() {
         <p>404 </p>
 
         <p>no se encuentra en una pagina</p>
-         <button onClick={()=> {throw redirect("/")}}>
-            regresar
-         </button>
+         <Link to ="/"> regresar
+         </Link>
+            
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { SearchBar } from "../components/SearchBar";
 import { useQueryFunction } from "../hooks/useQueryFunction";
 import type { IApiResponse } from "../types/IGenericApiResponse";
 import type { IRiky } from "../types/IRiky";
-import { CardGridSkeleton } from "../components/CardGridSkeleton";
+import { CardGridSkeleton } from "../components/skeletons/CardGridSkeleton";
 import { CardView } from "../components/CardView";
 import { rickAndMortyApi } from "../api/axiosInstances";
 import { Pagination } from "../components/Pagination";
@@ -27,7 +27,7 @@ export default function RickAndMorty() {
    apiAxiosInstance: rickAndMortyApi
  });
 
-   console.log("loq ue nos da", data)
+
   const hasNextPage=!!data?.info?.next;
 
   
@@ -61,8 +61,7 @@ export default function RickAndMorty() {
     e.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
 
   ) || [];
-  console.log("lo filtrado", characterFilters)
-
+  
   return (
     // Fondo principal: #a9f3fd (el más claro)
     <div className="min-h-screen bg-[#a9f3fd] p-4 md:p-10">
@@ -89,7 +88,7 @@ export default function RickAndMorty() {
           isPlaceData={isPlaceholderData}
           isNextDisabled={!hasNextPage || isPlaceholderData}
         />
-        {/* Grid de Personajes: Usando grid-cols-4 */}
+      
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {
             search && characterFilters?.length === 0 ?

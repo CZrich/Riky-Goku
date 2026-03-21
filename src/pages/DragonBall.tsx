@@ -4,7 +4,7 @@ import type { IApiResponse } from "../types/IGenericApiResponse";
 import { CardView } from "../components/CardView";
 import { SearchBar } from "../components/SearchBar";
 import { useState } from "react";
-import { CardGridSkeleton } from "../components/CardGridSkeleton";
+import { CardGridSkeleton } from "../components/skeletons/CardGridSkeleton";
 import { dbzApi } from "../api/axiosInstances";
 import { Pagination } from "../components/Pagination";
 import { useQueryFunction } from "../hooks/useQueryFunction";
@@ -35,9 +35,7 @@ const {
     const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)))
     
     const hasNextPage= !!data?.links?.next;
-    console.log("hasnext",hasNextPage)
-    console.log("pagina",page)
-    console.log(data);
+
    
     // Filtramos usando filterQuery
     const filteredCharacters = data?.items?.filter(char =>

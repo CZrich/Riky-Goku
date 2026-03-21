@@ -12,7 +12,7 @@ interface PaginationProps{
 
 export function Pagination({  page,prevPage,nextPage, isPlaceData,isNextDisabled }:PaginationProps ){
 
-    console.log("el calor de si tiene siguente pagina ",isNextDisabled)
+  
   return (
     <div className="flex items-center justify-center gap-6 my-10 p-4">
       
