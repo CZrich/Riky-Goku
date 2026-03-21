@@ -1,5 +1,5 @@
 export interface ICardQuiz {
-  id: number;
+  id: number | string;
   uniqueId?: string;
   src: string;
   name: string;

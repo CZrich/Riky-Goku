@@ -37,14 +37,14 @@ export async function getCharcaterMultiverse(): Promise<ICardQuiz[]> {
  
 
     const dbzCards: ICardQuiz[] = dbzItems.map( (c)=>({
-      id:c.id,
+      id: `dbz_${c.id}`,
       src:c.image,
       name:c.name,
       isFlipped: false,
       isMatched: false,
     }))
       const rmCards: ICardQuiz[] = rmItems.map( (c)=>({
-      id:c.id,
+      id: `rm_${c.id}`,
       src:c.image ||"",
       name:c.name,
       isFlipped: false,
