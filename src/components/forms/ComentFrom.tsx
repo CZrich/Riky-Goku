@@ -15,8 +15,6 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
     const { register, reset, handleSubmit, formState: { errors } } = useForm<CommentFormValues>({
         resolver: zodResolver(commentSchema)
     });
-    // ✨ LA MAGIA: Si nos pasan un comentario para editar, rellenamos el form.
-    // Si nos pasan null (crear nuevo), limpiamos el form.
     useEffect(() => {
         if (editingComment) {
             reset(editingComment);
@@ -28,7 +26,7 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
         onSubmit(data);
         console.log("aqui lanzamos el toas")
         
-        reset(); // Limpiamos el form después de guardar
+        reset(); 
     };
 
 

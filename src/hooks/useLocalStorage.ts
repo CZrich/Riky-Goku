@@ -7,7 +7,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
     });
      
     const setValue = (value: T | ((val: T) => T)) => {
-        // Permitimos que 'value' sea una función para tener el estado más fresco ("prev")
+       
         const valueToStore = value instanceof Function ? value(storedData) : value;
         
         setStoredData(valueToStore);

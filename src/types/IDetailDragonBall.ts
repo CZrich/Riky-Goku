@@ -17,7 +17,7 @@ export interface IDetailDragonBall {
     image: string;
     deletedAt: string | null;
   };
-  // Corregido: 'transformations' para coincidir con el JSON de la API
+ 
   transformations: {
     id: number;
     name: string;

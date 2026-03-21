@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-//import iconG from "../assets/iconG.svg"
+
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
