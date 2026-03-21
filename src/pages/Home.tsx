@@ -77,7 +77,8 @@ export default function Home() {
 
       {/* --- FOOTER SUTIL --- */}
       <footer className="absolute bottom-6 text-[10px] font-black uppercase tracking-[0.5em] text-[#8A9294]">
-        Sistemas Uky-OS // v2.0.26
+        ¡¡¡KAAAA... MEEEE... HAAAA... MEEEE... HAAAAAAAA!!! 
+
       </footer>
     </div>
   );
