@@ -1,5 +1,5 @@
 
-import type { CommentType } from "../schemas/comment.schema";
+import type { CommentType } from "../types/CommentType";
 import Comment from "./Comment";
 
 interface Props {

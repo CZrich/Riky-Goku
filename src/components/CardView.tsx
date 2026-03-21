@@ -49,7 +49,7 @@ export function CardView({ id,ruta, title, subtitle, image, badge, description, 
                 {footerInfo && (
                     <div className="pt-4 border-t border-gray-100 mt-auto flex justify-between items-center">
                         <span className="text-[11px] text-gray-400 font-bold uppercase tracking-widest">
-                            Stats
+                            Datos
                         </span>
                         <span className="text-xs text-gray-700 font-mono bg-gray-100 px-2 py-1 rounded">
                             {footerInfo}

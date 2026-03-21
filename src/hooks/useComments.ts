@@ -1,12 +1,13 @@
 import { useLocalStorage } from "./useLocalStorage";
-import type { CommentType } from "../schemas/comment.schema";
+import type { CommentFormValues } from "../schemas/comment.schema";
+import type {CommentType} from '../types/CommentType'
 import toast from 'react-hot-toast';
 export const useComments = () => {
   // Inicializamos con un array de CommentType
   const { storedData: comments, setValue: setComments } = useLocalStorage<CommentType[]>("comments", []);
 
   // ADD: Toma el estado anterior 'prev', le añade el nuevo elemento al principio
-  const addComment = (newComment: Omit<CommentType, "id" | "date">) => {
+  const addComment = (newComment: CommentFormValues) => {
     try {
       const commentWithMeta: CommentType = {
         ...newComment,

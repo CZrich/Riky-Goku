@@ -8,11 +8,14 @@ import { CardGridSkeleton } from "../components/CardGridSkeleton";
 import { dbzApi } from "../api/axiosInstances";
 import { Pagination } from "../components/Pagination";
 import { useQueryFunction } from "../hooks/useQueryFunction";
+
 import ErrorDisplay from "../components/ErrorDisplay";
+
 export default function DragonBall() {
    
     const [search, setSearch] = useState("");
     const [page,setPage]=useState(0)
+  
  
 const { 
   data, 
@@ -30,11 +33,12 @@ const {
 
     const nextPage=()=>(setPage(prev=>prev+1))
     const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)))
+    
     const hasNextPage= !!data?.links?.next;
     console.log("hasnext",hasNextPage)
     console.log("pagina",page)
     console.log(data);
-
+   
     // Filtramos usando filterQuery
     const filteredCharacters = data?.items?.filter(char =>
         char.name.toLowerCase().includes(search.toLowerCase())

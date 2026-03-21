@@ -12,6 +12,7 @@ export interface IApiResponse<T> {
     }
     info?:{
         next:string
+        pages:number
     }
 
 

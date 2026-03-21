@@ -1,6 +1,6 @@
 export interface ICardQuiz {
   id: number;
-  uniqueId: string;
+  uniqueId?: string;
   src: string;
   name: string;
   isFlipped: boolean;

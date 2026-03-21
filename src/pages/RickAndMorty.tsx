@@ -8,20 +8,12 @@ import { CardView } from "../components/CardView";
 import { rickAndMortyApi } from "../api/axiosInstances";
 import { Pagination } from "../components/Pagination";
 import ErrorDisplay from "../components/ErrorDisplay";
+
 export default function RickAndMorty() {
 
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
-/*
-  const { data, isError, isLoading, error, isPlaceholderData } = useQuery({
-
-    queryKey: ["character", page + 1],
-    queryFn: () => {
-      const res = genericFetcher<IApiResponse<IRiky>>(rickAndMortyApi, `?page=${page + 1}`)
-      return res;
-    },
-    placeholderData: keepPreviousData
-  })*/
+  
  const { 
    data, 
    isError, 
@@ -35,8 +27,17 @@ export default function RickAndMorty() {
    apiAxiosInstance: rickAndMortyApi
  });
 
+   console.log("loq ue nos da", data)
+  const hasNextPage=!!data?.info?.next;
+
+  
+
+ 
+
     const nextPage=()=>(setPage(prev=>prev+1));
     const prevPage =()=>(setPage(prev=>Math.max(prev - 1, 0)));
+   
+
   if (isError) {
        console.log(error?.name)
     return (
@@ -54,8 +55,8 @@ export default function RickAndMorty() {
       <CardGridSkeleton />
     )
   }
-  console.log("loq ue nos da", data)
-  const hasNextPage=!!data?.info?.next;
+
+
   const characterFilters = data?.results?.filter((e) => (
     e.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
 

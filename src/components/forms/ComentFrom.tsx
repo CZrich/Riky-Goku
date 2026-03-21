@@ -1,17 +1,18 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { commentSchema } from "../../schemas/comment.schema";
-import type { CommentType } from '../../schemas/comment.schema';
+import type { CommentFormValues } from '../../schemas/comment.schema';
+import type { CommentType } from '../../types/CommentType';
 import { useEffect } from 'react';
 
 
 interface Props {
-    onSubmit: (data: Omit<CommentType, "id" | "date">) => void;
+    onSubmit: (data: CommentFormValues) => void;
     editingComment: CommentType | null;
     onCancelEdit: () => void;
 }
 export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: Props) {
-    const { register, reset, handleSubmit, formState: { errors } } = useForm<CommentType>({
+    const { register, reset, handleSubmit, formState: { errors } } = useForm<CommentFormValues>({
         resolver: zodResolver(commentSchema)
     });
     // ✨ LA MAGIA: Si nos pasan un comentario para editar, rellenamos el form.
@@ -23,7 +24,7 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
             reset({ name: "", email: "", body: "" });
         }
     }, [editingComment, reset]);
-    const onFormSubmit = (data) => {
+    const onFormSubmit = (data:CommentFormValues) => {
         onSubmit(data);
         console.log("aqui lanzamos el toas")
         

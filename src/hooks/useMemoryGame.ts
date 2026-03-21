@@ -1,10 +1,14 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import type { ICardQuiz } from "../types/ICardQuiz";
 
 
+
+
 export const useMemoryGame = (initialImages: ICardQuiz[]) => {
-  const shuffleCards = useCallback(() => {
-    return [...initialImages, ...initialImages]
+  
+  // Acepta enviar una baraja nueva directamente
+  const shuffleCards = useCallback((imagesToShuffle = initialImages) => {
+        return [...imagesToShuffle, ...imagesToShuffle]
       .sort(() => Math.random() - 0.5)
       .map((card, index) => ({
         ...card,
@@ -13,24 +17,40 @@ export const useMemoryGame = (initialImages: ICardQuiz[]) => {
           : `card_${index}_${Math.random()}`,
         isFlipped: false,
         isMatched: false,
-      }));
+      })) as ICardQuiz[]; // <-- TypeScript forzado e instruído correctamente
   }, [initialImages]);
 
-  const [cards, setCards] = useState<ICardQuiz[]>(shuffleCards);
+
+
+  const [cards, setCards] = useState<ICardQuiz[]>([]);
   const [turns, setTurns] = useState(0);
 
-  
   const choiceOne = useRef<ICardQuiz | null>(null);
   const disabled = useRef<boolean>(false);
   const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const initGame = useCallback(() => {
+  // Escuchador dinámico
+  useEffect(() => {
+    if (initialImages && initialImages.length > 0) {
+      if (timeoutId.current) clearTimeout(timeoutId.current);
+      setCards(shuffleCards());
+      choiceOne.current = null;
+      disabled.current = false;
+      setTurns(0);
+    }
+  }, [initialImages, shuffleCards]);
+
+  // ✅ CORRECCIÓN: INIT ACEPTA DAFULT NUEVO. Al clicar reiniciar forzamos armado de baraja
+  const initGame = useCallback((newImages?: ICardQuiz[]) => {
     if (timeoutId.current) clearTimeout(timeoutId.current);
-    setCards(shuffleCards());
+    
+    // Si trae imagenes forzosas usa esas, si no usa las del estado viejo.
+    const deckToUse = newImages && newImages.length > 0 ? newImages : initialImages;
+    setCards(shuffleCards(deckToUse));
     choiceOne.current = null;
     disabled.current = false;
     setTurns(0);
-  }, [shuffleCards]);
+  }, [initialImages, shuffleCards]);
 
   const resetTurn = () => {
     choiceOne.current = null;
@@ -39,33 +59,25 @@ export const useMemoryGame = (initialImages: ICardQuiz[]) => {
   };
 
   const handleChoice = (card: ICardQuiz) => {
-    // Si la referencia está bloqueada mecánicamente, IGNORAR CLIC AL INSTANTE
     if (disabled.current || card.isFlipped || card.isMatched) return;
 
     const firstCard = choiceOne.current;
     if (firstCard && firstCard.uniqueId === card.uniqueId) return;
 
-    // TODO BIEN: Voltear la carta
     setCards(prev => prev.map(c => 
       c.uniqueId === card.uniqueId ? { ...c, isFlipped: true } : c
     ));
 
     if (!firstCard) {
-      // ESTA ES LA PRIMERA CARTA. Se guarda directo
       choiceOne.current = card;
     } else {
-      // se bloque la tabal cuando se da   click en la segunda carta
       disabled.current = true;
-
-      // Evaluar la lógica
       if (firstCard.id === card.id) {
-        // HACEN MATCH
-        setCards(prev => prev.map(c => 
+         setCards(prev => prev.map(c => 
           (c.id === firstCard.id) ? { ...c, isMatched: true, isFlipped: true } : c
         ));
         resetTurn();
       } else {
-        // funcionadidad para ocularse
         timeoutId.current = setTimeout(() => {
           setCards(prev => prev.map(c => 
             (c.uniqueId === firstCard.uniqueId || c.uniqueId === card.uniqueId) 
@@ -78,5 +90,6 @@ export const useMemoryGame = (initialImages: ICardQuiz[]) => {
   };
 
   const isGameOver = cards.length > 0 && cards.every(c => c.isMatched);
+
   return { cards, turns, handleChoice, initGame, isGameOver };
 };

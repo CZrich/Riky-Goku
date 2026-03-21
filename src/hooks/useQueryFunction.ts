@@ -26,7 +26,7 @@ export const useQueryFunction = <T>({
       return res;
     },
     placeholderData: keepPreviousData,
-    staleTime: 6000 
+    
   });
 
   return { data, isError, isPending, error, isPlaceholderData };
