@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# 🌌 Uky Wiki - Multiverse Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel)](https://riky-goku.vercel.app)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-Currently, two official plugins are available:
+**Uky Wiki** es una plataforma interactiva y educativa desarrollada por un estudiante de Ingeniería de Sistemas. El proyecto fusiona los universos de **Dragon Ball** y **Rick & Morty**, implementando patrones de diseño modernos, gestión de estado asíncrono y validaciones estrictas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Características del Proyecto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Explorador de Guerreros Z:** Consumo de API con paginación dinámica y filtrado en tiempo real.
+- **Gestión de Comentarios (CRUD):** - Feed interactivo con opciones de **Crear, Editar y Eliminar**.
+  - Validaciones robustas de formularios (Email, longitud de caracteres, etc.).
+- **Memory Match Z:** Mini-juego de memoria con lógica de comparación de pares y contador de turnos.
+- **UI/UX Temática:** Diseño "High-Tech" inspirado en la Corporación Cápsula, utilizando una paleta de colores personalizada:
+  - 🔵 **Resolution Blue:** `#072083`
+  - 🟠 **Heliconia (Goku):** `#F85B1A`
+  - 🟢 **Portal Green:** `#97ce4c`
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Stack Tecnológico
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Core:** React 18 + Vite + TypeScript.
+- **Data Fetching:** [TanStack Query v5](https://tanstack.com/query/latest) (React Query) para caché y sincronización de estados.
+- **Validación:** [Zod](https://zod.dev/) para esquemas de datos seguros.
+- **Formularios:** React Hook Form + Zod Resolver.
+- **Estilos:** Tailwind CSS (Animaciones 3D para cartas y efectos de aura).
+- **HTTP Client:** Axios con instancias personalizadas e interceptores.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 Instalación Local
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/tu-usuario/riky-goku.git](https://github.com/tu-usuario/riky-goku.git)
+   cd riky-goku

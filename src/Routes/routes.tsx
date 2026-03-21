@@ -5,7 +5,7 @@ import DragonBall from "../pages/DragonBall";
 import RikAndMorty from "../pages/RickAndMorty";
 import NoFoundPage from "../pages/NoFoundPage";
 import DetailPageDragonBall from "../pages/DetailPageDragonBall";
-import { DetailPageRickAndMorty } from "../pages/DetailPageRickAndMorty";
+import  DetailPageRickAndMorty from "../pages/DetailPageRickAndMorty";
 import CommenPage from "../pages/CommentPage";
 import QuizzPage from "../pages/QuizzPage";
 
