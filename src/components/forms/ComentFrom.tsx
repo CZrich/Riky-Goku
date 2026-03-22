@@ -13,7 +13,8 @@ interface Props {
 }
 export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: Props) {
     const { register, reset, handleSubmit, formState: { errors } } = useForm<CommentFormValues>({
-        resolver: zodResolver(commentSchema)
+        resolver: zodResolver(commentSchema),
+        mode:"onChange"
     });
     useEffect(() => {
         if (editingComment) {
@@ -41,6 +42,7 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
                 <div className="flex flex-col gap-1">
                     <label htmlFor="name" className="text-[#072083] font-bold uppercase text-xs ml-2">Título</label>
                     <input
+                    id='name'
                         type="text"
                         {...register("name")}
                         placeholder="Pienso que Goku es..."
@@ -53,6 +55,7 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
                 <div className="flex flex-col gap-1">
                     <label htmlFor="email" className="text-[#072083] font-bold uppercase text-xs ml-2">Email</label>
                     <input
+                    id='email'
                         type="email"
                         {...register("email")}
                         placeholder="tu-correo@ejemplo.com"
@@ -64,7 +67,8 @@ export default function CommentForm({ onSubmit, editingComment, onCancelEdit }: 
 
                 <div className="flex flex-col gap-1">
                     <label htmlFor="body" className="text-[#072083] font-bold uppercase text-xs ml-2">Comentario</label>
-                    <textarea
+                    <textarea 
+                    id ='body'
                         {...register("body")}
                         rows={4}
                         placeholder="Escribe aquí tu opinión..."

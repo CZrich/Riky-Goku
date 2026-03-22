@@ -13,6 +13,7 @@ export const useFetch = <T,>(instance:AxiosInstance,endpoint:string)=> {
             setIsLoading(true)
             const res = instance.get(endpoint)
             res.then((data) => setData(data.data as T))
+             
                 .catch(err => setError(err))
 
         } finally {

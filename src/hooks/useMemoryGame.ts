@@ -40,7 +40,7 @@ export const useMemoryGame = (initialImages: ICardQuiz[]) => {
     }
   }, [initialImages, shuffleCards]);
 
-  // ✅ CORRECCIÓN: INIT ACEPTA DAFULT NUEVO. Al clicar reiniciar forzamos armado de baraja
+ 
   const initGame = useCallback((newImages?: ICardQuiz[]) => {
     if (timeoutId.current) clearTimeout(timeoutId.current);
     

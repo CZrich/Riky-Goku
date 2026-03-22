@@ -3,10 +3,10 @@ import type { CommentFormValues } from "../schemas/comment.schema";
 import type {CommentType} from '../types/CommentType'
 import toast from 'react-hot-toast';
 export const useComments = () => {
-  // Inicializamos con un array de CommentType
+ 
   const { storedData: comments, setValue: setComments } = useLocalStorage<CommentType[]>("comments", []);
 
-  // ADD: Toma el estado anterior 'prev', le añade el nuevo elemento al principio
+  // ADD:
   const addComment = (newComment: CommentFormValues) => {
     try {
       const commentWithMeta: CommentType = {
@@ -15,7 +15,7 @@ export const useComments = () => {
         date: new Date().toISOString(),
       };
 
-      // Le pasamos un callback a setComments para tener la versión más fresca de los datos
+      // 
       setComments((prev) => [commentWithMeta, ...prev]);
        toast.success("comentario publicado")
     } catch (err) {
@@ -26,7 +26,7 @@ export const useComments = () => {
 
   };
 
-  // UPDATE: Recorre el array anterior y actualiza solo el que coincida
+  // UPDATE:
   const updateComment = (id: string, updatedData: Partial<CommentType>) => {
     try {
       setComments((prev) =>
@@ -44,7 +44,7 @@ export const useComments = () => {
 
   };
 
-  // DELETE: Filtra y remueve el ID
+  // DELETE: 
   const deleteComment = (id: string) => {
     try {
       setComments((prev) => prev.filter((comment) => comment.id !== id));

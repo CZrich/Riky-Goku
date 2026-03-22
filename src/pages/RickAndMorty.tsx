@@ -95,7 +95,7 @@ export default function RickAndMorty() {
               <div className="col-span-full text-center py-20 bg-white/40 border-4 border-dashed border-[#35c9dd] rounded-[3rem] text-[#02afc5] font-black text-2xl">
                 NO SE ENCONTRÓ NINGUNA VARIANTE EN ESTA DIMENSIÓN
               </div> :
-              // CORRECCIÓN: Mapeamos 'characterFilters' para que la búsqueda sea dinámica
+             
               (characterFilters.map((cha) => (
                 <div
                   key={cha.id}

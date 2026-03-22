@@ -26,7 +26,7 @@ const {
 } = useQueryFunction<IApiResponse<IGoku>>({
   queryKeyName: "dragonball",
   page:page,
-  endPointUrl: "", // Puedes usar 'characters' u otra url base aquí
+  endPointUrl: "", 
   apiAxiosInstance: dbzApi
 });
 
